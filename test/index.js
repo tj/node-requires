@@ -26,3 +26,16 @@ describe('requires(str)', function(){
     });
   })
 })
+
+describe('requires(str, fn)', function(){
+  it('should replace requires', function(){
+    var a = fs.readFileSync('test/fixtures/a.js', 'utf8');
+    
+    var str = requires(a, function(require){
+      return 'require("woot/' + require.path + '")';
+    });
+
+    str.should.include('var a = require("woot/./a.js");');
+    str.should.include('var b = require("woot/./something/here/whoop");');
+  })
+})

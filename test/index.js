@@ -25,6 +25,18 @@ describe('requires(str)', function(){
       index: 79
     });
   })
+
+  it('should skip require in comments', function(){
+    var a = fs.readFileSync('test/fixtures/comment.js', 'utf8');
+    var ret = requires(a);
+
+    ret.length.should.eql(1);
+    ret[0].should.eql({
+      string: "require('./b.js')",
+      path: './b.js',
+      index: 3
+    });
+  });
 })
 
 describe('requires(str, fn)', function(){

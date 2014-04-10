@@ -20,6 +20,7 @@ function requires(str, fn) {
   var ret = [];
   var m;
 
+  str = removeComment(str);
   while (m = re.exec(str)) {
     ret.push({
       string: m[0],
@@ -37,4 +38,8 @@ function map(str, fn) {
   });
 
   return str;
+}
+
+function removeComment(str) {
+  return str.replace(/\/\*[\S\s]*?\*\/|\/\/.*/g, '');
 }

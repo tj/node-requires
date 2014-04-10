@@ -20,7 +20,7 @@ function requires(str, fn) {
   var ret = [];
   var m;
 
-  str = removeComment(str);
+  str = stripCommends(str);
   while (m = re.exec(str)) {
     ret.push({
       string: m[0],
@@ -32,6 +32,10 @@ function requires(str, fn) {
   return ret;
 }
 
+/**
+ * Map requires.
+ */
+
 function map(str, fn) {
   requires(str).forEach(function(r){
     str = str.replace(r.string, fn(r));
@@ -40,6 +44,10 @@ function map(str, fn) {
   return str;
 }
 
-function removeComment(str) {
+/**
+ * Strip comments.
+ */
+
+function stripCommends(str) {
   return str.replace(/\/\*[\S\s]*?\*\/|\/\/.*/g, '');
 }

@@ -20,7 +20,7 @@ function requires(str, fn) {
   var ret = [];
   var m;
 
-  str = stripCommends(str);
+  str = stripComments(str);
   while (m = re.exec(str)) {
     ret.push({
       string: m[0],
@@ -48,6 +48,6 @@ function map(str, fn) {
  * Strip comments.
  */
 
-function stripCommends(str) {
+function stripComments(str) {
   return str.replace(/\/\*[\S\s]*?\*\/|\/\/.*/g, '');
 }

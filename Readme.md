@@ -1,8 +1,8 @@
-
 # requires
 
   Super simple require parser, trades correctness for speed. If you
   do weird things like concat strings for require()s this will fail.
+  Also, `require()` that are commented-out will still be included.
 
 ## Installation
 

@@ -20,7 +20,7 @@ describe('requires(str)', function(){
     });
 
     ret[2].should.eql({
-      string: "require(\"something\")",
+      string: "require(\n\t\"something\"\n)",
       path: 'something',
       index: 79
     });
@@ -42,7 +42,7 @@ describe('requires(str)', function(){
 describe('requires(str, fn)', function(){
   it('should replace requires', function(){
     var a = fs.readFileSync('test/fixtures/a.js', 'utf8');
-    
+
     var str = requires(a, function(require){
       return 'require("woot/' + require.path + '")';
     });

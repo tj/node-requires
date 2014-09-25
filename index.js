@@ -16,7 +16,7 @@ module.exports = requires;
 
 function requires(str, fn) {
   if (fn) return map(str, fn);
-  var re = /require *\(['"]([^'"]+)['"]\)/g;
+  var re = /require\s*\(\s*['"]([^'"]+)['"]\s*\)/g;
   var ret = [];
   var m;
 

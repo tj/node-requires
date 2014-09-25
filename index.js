@@ -37,11 +37,21 @@ function requires(str, fn) {
  */
 
 function map(str, fn) {
-  requires(str).forEach(function(r){
-    str = str.replace(r.string, fn(r));
-  });
+  var result = '';
+  var offset = 0;
 
-  return str;
+  requires(str).forEach(function(r) {
+    var start = r.index - offset;
+    var end = start + r.string.length;
+
+    result += str.substr(0, start);
+    result += fn(r);
+    offset += end;
+    str = str.substr(end);
+  });
+  result += str;
+
+  return result;
 }
 
 /**

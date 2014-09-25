@@ -1,8 +1,7 @@
+// inline comment require('./a.js');
 
-// require('./a.js');
+startCode; require('./a.js'); endCode;
 
-require('./b.js');
-
-/* 
-  require('./c');
+/*
+  multiline comment require('./a.js');
 */

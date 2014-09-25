@@ -47,7 +47,7 @@ describe('requires(str, fn)', function(){
       return 'require("woot/' + require.path + '")';
     });
 
-    str.should.include('var a = require("woot/./a.js");');
-    str.should.include('var b = require("woot/./something/here/whoop");');
+    str.should.containEql('var a = require("woot/./a.js");');
+    str.should.containEql('var b = require("woot/./something/here/whoop");');
   })
 })

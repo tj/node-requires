@@ -34,15 +34,16 @@ describe('requires(str)', function(){
     ret[0].should.eql({
       string: "require('./b.js')",
       path: './b.js',
-      index: 3
+      index: 24
     });
+    a.substr(ret[0].index, ret[0].string.length).should.eql(ret[0].string);
   });
 })
 
 describe('requires(str, fn)', function(){
   it('should replace requires', function(){
     var a = fs.readFileSync('test/fixtures/a.js', 'utf8');
-    
+
     var str = requires(a, function(require){
       return 'require("woot/' + require.path + '")';
     });

@@ -20,7 +20,7 @@ function requires(str, fn) {
   var ret = [];
   var m;
 
-  str = stripComments(str);
+  str = replaceComments(str);
   while (m = re.exec(str)) {
     ret.push({
       string: m[0],
@@ -45,9 +45,11 @@ function map(str, fn) {
 }
 
 /**
- * Strip comments.
+ * Replace comments with blanks to preserve offsets
  */
 
-function stripComments(str) {
-  return str.replace(/\/\*[\S\s]*?\*\/|\/\/.*/g, '');
+function replaceComments(str) {
+  return str.replace(/\/\*[\S\s]*?\*\/|\/\/.*/g, function(match) {
+    return Array(match.length + 1).join(' ');
+  });
 }

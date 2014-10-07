@@ -1,6 +1,6 @@
 {
   "name": "requires",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "repository": "visionmedia/node-requires",
   "description": "like node-detective but trades AST correctness for speed",
   "keywords": ["require"],

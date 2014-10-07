@@ -16,11 +16,11 @@ module.exports = requires;
 
 function requires(str, fn) {
   if (fn) return map(str, fn);
-  var re = /require *\(['"]([^'"]+)['"]\)/g;
+  var re = /require\s*\(\s*['"]([^'"]+)['"]\s*\)/g;
   var ret = [];
   var m;
 
-  str = stripCommends(str);
+  str = stripComments(str);
   while (m = re.exec(str)) {
     ret.push({
       string: m[0],
@@ -48,6 +48,6 @@ function map(str, fn) {
  * Strip comments.
  */
 
-function stripCommends(str) {
+function stripComments(str) {
   return str.replace(/\/\*[\S\s]*?\*\/|\/\/.*/g, '');
 }
